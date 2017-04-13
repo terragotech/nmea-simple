@@ -63,7 +63,8 @@ const encoders: { [sentenceId: string]: Encoder } = {
 
 export function parseNmeaSentence(sentence: string): Packet {
     if (!validNmeaChecksum(sentence)) {
-        throw Error(`Invalid sentence: "${sentence}".`);
+        // throw Error(`Invalid sentence: "${sentence}".`);
+        return {};
     }
 
     const fields = sentence.split("*")[0].split(",");
@@ -85,7 +86,8 @@ export function parseNmeaSentence(sentence: string): Packet {
     }
 
     if (!parser) {
-        throw Error(`No known parser for sentence ID "${sentenceId}".`);
+        // throw Error(`No known parser for sentence ID "${sentenceId}".`);
+        return {};
     }
 
     let packet = parser(fields);
