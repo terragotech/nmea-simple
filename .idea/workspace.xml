@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47a95a2e-15a7-4eed-8f71-cf4ee6132150" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codecs/GST.ts" afterPath="$PROJECT_DIR$/codecs/GST.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.js" afterPath="$PROJECT_DIR$/dist/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.ts" afterPath="$PROJECT_DIR$/index.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="$PROJECT_DIR$/npm-debug.log" />
-    </list>
+    <list default="true" id="47a95a2e-15a7-4eed-8f71-cf4ee6132150" name="Default" comment="" />
     <ignored path="nmea-simple.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -124,6 +119,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="47a95a2e-15a7-4eed-8f71-cf4ee6132150" name="Default" comment="" />
@@ -133,15 +131,15 @@
       <updated>1490605617186</updated>
       <workItem from="1490605618470" duration="1368000" />
       <workItem from="1491564319574" duration="39000" />
-      <workItem from="1492430397457" duration="64000" />
+      <workItem from="1492430397457" duration="217000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1471000" />
+    <option name="totallyTimeSpent" value="1624000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="9" y="40" width="1260" height="692" extended-state="0" />
+    <frame x="9" y="40" width="1260" height="692" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
