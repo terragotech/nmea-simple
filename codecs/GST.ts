@@ -13,6 +13,7 @@ export interface GSTPacket {
     horizontalaccuracy: string;
     lonError: string;
     verticalaccuracy: string;
+    talkerId?: string;
 }
 
 export function decodeSentence(fields: string[]): GSTPacket {
