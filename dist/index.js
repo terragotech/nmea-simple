@@ -50,6 +50,7 @@ var encoders = {
 function parseNmeaSentence(sentence) {
     if (!helpers_1.validNmeaChecksum(sentence)) {
         throw Error("Invalid sentence: \"" + sentence + "\".");
+        // return {};
     }
     var fields = sentence.split("*")[0].split(",");
     var talkerId;
@@ -69,6 +70,7 @@ function parseNmeaSentence(sentence) {
     }
     if (!parser) {
         throw Error("No known parser for sentence ID \"" + sentenceId + "\".");
+        // return {};
     }
     var packet = parser(fields);
     packet.talkerId = talkerId;
