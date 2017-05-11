@@ -17,11 +17,17 @@ export interface GSTPacket {
 }
 
 export function decodeSentence(fields: string[]): GSTPacket {
+    let resultRms = "";
+    if (fields[2] < fields[6]) {
+        resultRms = fields[2] === "0" ? "" : fields[2];
+    } else {
+        resultRms = fields[6] === "0" ? "" : fields[6];
+    }
   return {
     sentenceId: sentenceId,
     sentenceName: sentenceName,
     timestamp: fields[1],
-    rms: fields[2],
+    rms: resultRms,
     semiMajorError: fields[3],
     semiMinorError: fields[4],
     orientation: fields[5],
