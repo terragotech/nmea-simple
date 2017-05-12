@@ -17,11 +17,23 @@ export interface GSTPacket {
 }
 
 export function decodeSentence(fields: string[]): GSTPacket {
+    let resultRms = "";
+    let fields2 = Number(fields[2]);
+    let fields6 = Number(fields[6]);
+    if (fields2 === 0 && fields6 === 0) {
+        resultRms = "";
+    } else {
+        if (fields2 < fields6) {
+            resultRms = fields2 === 0 ? fields[6] : fields[2];
+        } else {
+            resultRms = fields6 === 0 ? fields[2] : fields[6];
+        }
+    }
   return {
     sentenceId: sentenceId,
     sentenceName: sentenceName,
     timestamp: fields[1],
-    rms: fields[2],
+    rms: resultRms,
     semiMajorError: fields[3],
     semiMinorError: fields[4],
     orientation: fields[5],
