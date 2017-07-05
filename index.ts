@@ -15,12 +15,15 @@ import { decodeSentence as decodeRMC, RMCPacket } from "./codecs/RMC";
 import { decodeSentence as decodeVHW, VHWPacket } from "./codecs/VHW";
 import { decodeSentence as decodeVTG, VTGPacket, encodePacket as encodeVTG } from "./codecs/VTG";
 import { decodeSentence as decodeGST, GSTPacket } from "./codecs/GST";
+import { decodeSentence as decodePLTIT, PLTITPacket } from "./codecs/PLTIT";
+import { decodeSentence as decodePTNLA, PTNLAPacket } from "./codecs/PTNLA";
+import { decodeSentence as decodePTNLB, PTNLBPacket } from "./codecs/PTNLB";
 
 import { validNmeaChecksum } from "./helpers";
 
 
-export type Packet = APBPacket | BWCPacket | DBTPacket | GGAPacket | GLLPacket | GSAPacket | GSVPacket | HDGPacket | HDMPacket | HDTPacket | MTKPacket | MWVPacket | RDIDPacket | RMCPacket | VHWPacket | VTGPacket | GSTPacket;
-export { APBPacket, BWCPacket, DBTPacket, GGAPacket, GLLPacket, GSAPacket, GSVPacket, HDGPacket, HDMPacket, HDTPacket, MTKPacket, MWVPacket, RDIDPacket, RMCPacket, VHWPacket, VTGPacket, GSTPacket };
+export type Packet = APBPacket | BWCPacket | DBTPacket | GGAPacket | GLLPacket | GSAPacket | GSVPacket | HDGPacket | HDMPacket | HDTPacket | MTKPacket | MWVPacket | RDIDPacket | RMCPacket | VHWPacket | VTGPacket | GSTPacket | PLTITPacket | PTNLAPacket | PTNLBPacket;
+export { APBPacket, BWCPacket, DBTPacket, GGAPacket, GLLPacket, GSAPacket, GSVPacket, HDGPacket, HDMPacket, HDTPacket, MTKPacket, MWVPacket, RDIDPacket, RMCPacket, VHWPacket, VTGPacket, GSTPacket, PLTITPacket, PTNLAPacket, PTNLBPacket };
 
 
 type Decoder = (parts: string[]) => Packet;
@@ -43,7 +46,10 @@ const decoders: { [sentenceId: string]: Decoder } = {
     RMC: decodeRMC,
     VHW: decodeVHW,
     VTG: decodeVTG,
-    GST: decodeGST
+    GST: decodeGST,
+    PLTIT: decodePLTIT,
+    PTNLA: decodePTNLA,
+    PTNLB: decodePTNLB
 };
 
 

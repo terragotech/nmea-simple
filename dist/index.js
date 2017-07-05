@@ -17,6 +17,9 @@ var RMC_1 = require("./codecs/RMC");
 var VHW_1 = require("./codecs/VHW");
 var VTG_1 = require("./codecs/VTG");
 var GST_1 = require("./codecs/GST");
+var PLTIT_1 = require("./codecs/PLTIT");
+var PTNLA_1 = require("./codecs/PTNLA");
+var PTNLB_1 = require("./codecs/PTNLB");
 var helpers_1 = require("./helpers");
 var decoders = {
     APB: APB_1.decodeSentence,
@@ -35,7 +38,10 @@ var decoders = {
     RMC: RMC_1.decodeSentence,
     VHW: VHW_1.decodeSentence,
     VTG: VTG_1.decodeSentence,
-    GST: GST_1.decodeSentence
+    GST: GST_1.decodeSentence,
+    PLTIT: PLTIT_1.decodeSentence,
+    PTNLA: PTNLA_1.decodeSentence,
+    PTNLB: PTNLB_1.decodeSentence
 };
 var encoders = {
     DBT: DBT_1.encodePacket,
