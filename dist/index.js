@@ -69,7 +69,13 @@ function parseNmeaSentence(sentence) {
         talkerId = fields[0].substr(1, 2);
         sentenceId = fields[0].substr(3);
     }
-    fields[0] = sentenceId;
+    if (fields[0] === "PLTIT" || fields[0] === "PTNLA" || fields[0] === "PTNLB") {
+        sentenceId = fields[0];
+        talkerId = fields[0];
+    }
+    else {
+        fields[0] = sentenceId;
+    }
     var parser = decoders[sentenceId];
     if (!parser && sentenceId.substr(0, 3) === "MTK") {
         parser = MTK_1.decodeSentence;
