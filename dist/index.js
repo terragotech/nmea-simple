@@ -69,9 +69,9 @@ function parseNmeaSentence(sentence) {
         talkerId = fields[0].substr(1, 2);
         sentenceId = fields[0].substr(3);
     }
-    if (fields[0] === "PLTIT" || fields[0] === "PTNLA" || fields[0] === "PTNLB") {
-        sentenceId = fields[0];
-        talkerId = fields[0];
+    if (fields[0] === "$PLTIT" || fields[0] === "$PTNLA" || fields[0] === "$PTNLB") {
+        sentenceId = fields[0].substr(1);
+        talkerId = fields[0].substr(1);
     }
     else {
         fields[0] = sentenceId;
