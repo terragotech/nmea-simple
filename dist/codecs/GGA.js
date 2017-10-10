@@ -43,6 +43,12 @@ exports.sentenceId = "GGA";
 exports.sentenceName = "Global positioning system fix data";
 var FixTypes = ["none", "fix", "delta", "pps", "rtk", "frtk", "estimated", "manual", "simulation"];
 function decodeSentence(fields) {
+    var sat = [];
+    var numRecords = helpers_1.parseIntSafe(fields[7]);
+    for (var i = 0; i < numRecords; i++) {
+        sat.push(i);
+    }
+    ;
     return {
         sentenceId: exports.sentenceId,
         sentenceName: exports.sentenceName,
@@ -50,7 +56,7 @@ function decodeSentence(fields) {
         latitude: helpers_1.parseLatitude(fields[2], fields[3]),
         longitude: helpers_1.parseLongitude(fields[4], fields[5]),
         fixType: FixTypes[helpers_1.parseIntSafe(fields[6])],
-        satellitesInView: helpers_1.parseIntSafe(fields[7]),
+        satellites: sat,
         horizontalDilution: helpers_1.parseFloatSafe(fields[8]),
         altitudeMeters: helpers_1.parseFloatSafe(fields[9]),
         geoidalSeperation: helpers_1.parseFloatSafe(fields[11]),
@@ -65,7 +71,6 @@ function encodePacket(packet, talker) {
     result.push(helpers_1.encodeLatitude(packet.latitude));
     result.push(helpers_1.encodeLongitude(packet.longitude));
     result.push(helpers_1.encodeValue(FixTypes.indexOf(packet.fixType)));
-    result.push(helpers_1.encodeValue(packet.satellitesInView));
     result.push(helpers_1.encodeFixed(packet.horizontalDilution, 1));
     result.push(helpers_1.encodeAltitude(packet.altitudeMeters));
     result.push(helpers_1.encodeGeoidalSeperation(packet.geoidalSeperation));

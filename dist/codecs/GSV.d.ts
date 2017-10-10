@@ -13,6 +13,5 @@ export interface GSVPacket {
     numberOfMessages: number;
     messageNumber: number;
     satellitesInView: number;
-    satellites: Satellite[];
 }
 export declare function decodeSentence(fields: string[]): GSVPacket;

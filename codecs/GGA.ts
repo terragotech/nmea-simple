@@ -56,7 +56,7 @@ export interface GGAPacket {
     latitude: number;
     longitude: number;
     fixType: FixType;
-    satellitesInView: number;
+    satellites: object;
     horizontalDilution: number;
     altitudeMeters: number;
     geoidalSeperation: number;
@@ -66,6 +66,11 @@ export interface GGAPacket {
 
 
 export function decodeSentence(fields: string[]): GGAPacket {
+    let sat = [];
+    const numRecords = parseIntSafe(fields[7]);
+    for (let i = 0; i < numRecords; i++) {
+        sat.push(i);
+    };
     return {
         sentenceId: sentenceId,
         sentenceName: sentenceName,
@@ -73,7 +78,7 @@ export function decodeSentence(fields: string[]): GGAPacket {
         latitude: parseLatitude(fields[2], fields[3]),
         longitude: parseLongitude(fields[4], fields[5]),
         fixType: FixTypes[parseIntSafe(fields[6])],
-        satellitesInView: parseIntSafe(fields[7]),
+        satellites: sat,
         horizontalDilution: parseFloatSafe(fields[8]),
         altitudeMeters: parseFloatSafe(fields[9]),
         geoidalSeperation: parseFloatSafe(fields[11]),
@@ -90,13 +95,11 @@ export function encodePacket(packet: GGAPacket, talker: string): string {
     result.push(encodeLatitude(packet.latitude));
     result.push(encodeLongitude(packet.longitude));
     result.push(encodeValue(FixTypes.indexOf(packet.fixType)));
-    result.push(encodeValue(packet.satellitesInView));
     result.push(encodeFixed(packet.horizontalDilution, 1));
     result.push(encodeAltitude(packet.altitudeMeters));
     result.push(encodeGeoidalSeperation(packet.geoidalSeperation));
     result.push(encodeFixed(packet.differentialAge, 2));
     result.push(encodeValue(packet.differentialRefStn));
-
     const resultWithoutChecksum = result.join(",");
     return resultWithoutChecksum + createNmeaChecksumFooter(resultWithoutChecksum);
 }

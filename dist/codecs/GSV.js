@@ -59,8 +59,7 @@ function decodeSentence(fields) {
         sentenceName: exports.sentenceName,
         numberOfMessages: helpers_1.parseIntSafe(fields[1]),
         messageNumber: helpers_1.parseIntSafe(fields[2]),
-        satellitesInView: helpers_1.parseIntSafe(fields[3]),
-        satellites: sats
+        satellitesInView: helpers_1.parseIntSafe(fields[3])
     };
 }
 exports.decodeSentence = decodeSentence;

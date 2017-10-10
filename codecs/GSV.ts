@@ -59,7 +59,6 @@ export interface GSVPacket {
     numberOfMessages: number;
     messageNumber: number;
     satellitesInView: number;
-    satellites: Satellite[];
 }
 
 
@@ -83,7 +82,6 @@ export function decodeSentence(fields: string[]): GSVPacket {
         sentenceName: sentenceName,
         numberOfMessages: parseIntSafe(fields[1]),
         messageNumber: parseIntSafe(fields[2]),
-        satellitesInView: parseIntSafe(fields[3]),
-        satellites: sats
+        satellitesInView: parseIntSafe(fields[3])
     };
 }

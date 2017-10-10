@@ -9,7 +9,7 @@ export interface GGAPacket {
     latitude: number;
     longitude: number;
     fixType: FixType;
-    satellitesInView: number;
+    satellites: object;
     horizontalDilution: number;
     altitudeMeters: number;
     geoidalSeperation: number;
