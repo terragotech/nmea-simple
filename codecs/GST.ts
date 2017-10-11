@@ -17,7 +17,7 @@ export interface GSTPacket {
 }
 
 export function decodeSentence(fields: string[]): GSTPacket {
-  let resultRms = 2 * Math.sqrt(((Math.pow(Number(fields[6]), 2) + Math.pow(Number(fields[7]), 2)) /    2));
+  let resultRms = Math.sqrt(((Math.pow(Number(fields[6]), 2) + Math.pow(Number(fields[7]), 2))));
   return {
     sentenceId: sentenceId,
     sentenceName: sentenceName,

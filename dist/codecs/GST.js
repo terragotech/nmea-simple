@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sentenceId = "GST";
 exports.sentenceName = "Position Accuracy";
 function decodeSentence(fields) {
-    var resultRms = 2 * Math.sqrt(((Math.pow(Number(fields[6]), 2) + Math.pow(Number(fields[7]), 2)) / 2));
+    var resultRms = Math.sqrt(((Math.pow(Number(fields[6]), 2) + Math.pow(Number(fields[7]), 2))));
     return {
         sentenceId: exports.sentenceId,
         sentenceName: exports.sentenceName,
