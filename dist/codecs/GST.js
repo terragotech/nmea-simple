@@ -3,18 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sentenceId = "GST";
 exports.sentenceName = "Position Accuracy";
 function decodeSentence(fields) {
-    var resultRms = "";
-    if (fields[2] < fields[6]) {
-        resultRms = fields[2] === "0" ? "" : fields[2];
-    }
-    else {
-        resultRms = fields[6] === "0" ? "" : fields[6];
-    }
+    var resultRms = 2 * Math.sqrt(((Math.pow(Number(fields[6]), 2) + Math.pow(Number(fields[7]), 2)) / 2));
     return {
         sentenceId: exports.sentenceId,
         sentenceName: exports.sentenceName,
         timestamp: fields[1],
-        rms: resultRms,
+        rms: resultRms + "",
         semiMajorError: fields[3],
         semiMinorError: fields[4],
         orientation: fields[5],
