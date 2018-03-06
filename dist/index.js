@@ -54,9 +54,11 @@ var encoders = {
     VTG: VTG_1.encodePacket
 };
 function parseNmeaSentence(sentence) {
-    if (!helpers_1.validNmeaChecksum(sentence)) {
-        throw Error("Invalid sentence: \"" + sentence + "\".");
-        // return {};
+    if (sentence.charAt(1) !== "P") {
+        if (!helpers_1.validNmeaChecksum(sentence)) {
+            throw Error("Invalid sentence: \"" + sentence + "\".");
+            // return {};
+        }
     }
     var fields = sentence.split("*")[0].split(",");
     var talkerId;

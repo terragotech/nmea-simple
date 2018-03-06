@@ -68,9 +68,11 @@ const encoders: { [sentenceId: string]: Encoder } = {
 };
 
 export function parseNmeaSentence(sentence: string): Packet {
-    if (!validNmeaChecksum(sentence)) {
-        throw Error(`Invalid sentence: "${sentence}".`);
+    if (sentence.charAt(1) !== "P") {
+        if (!validNmeaChecksum(sentence)) {
+            throw Error(`Invalid sentence: "${sentence}".`);
         // return {};
+        }
     }
 
     const fields = sentence.split("*")[0].split(",");
